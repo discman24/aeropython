@@ -160,6 +160,8 @@ export default function BattleScreen({ quest, onVictory, onRetreat, playerStats 
 
   const lineCount = code.split('\n').length;
   const hpPercent = (enemyHp / enemy.hp) * 100;
+  const difficulty = enemy.isBoss ? 'Boss' : enemy.hp <= 50 ? 'Easy' : enemy.hp <= 70 ? 'Medium' : 'Hard';
+  const diffColor = difficulty === 'Boss' ? 'text-amber-400' : difficulty === 'Easy' ? 'text-emerald-400' : difficulty === 'Medium' ? 'text-amber-400' : 'text-red-400';
 
   // Victory screen
   if (battleState === 'victory') {
@@ -219,7 +221,7 @@ export default function BattleScreen({ quest, onVictory, onRetreat, playerStats 
                 {enemy.name}
               </h3>
               <p className="text-[9px] font-bold text-slate-600 uppercase tracking-widest">
-                {quest.concept}
+                {quest.concept} <span className={`ml-1 ${diffColor}`}>• {difficulty}</span>
               </p>
             </div>
           </div>

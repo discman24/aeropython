@@ -2,10 +2,14 @@ import React from 'react';
 import { Lock, Star, ChevronRight, Crown } from 'lucide-react';
 
 const regionPositions = [
-  { top: '65%', left: '15%' },
-  { top: '45%', left: '35%' },
-  { top: '25%', left: '55%' },
-  { top: '10%', left: '78%' },
+  { top: '75%', left: '10%' },
+  { top: '60%', left: '28%' },
+  { top: '48%', left: '48%' },
+  { top: '35%', left: '68%' },
+  { top: '22%', left: '85%' },
+  { top: '22%', left: '60%' },
+  { top: '10%', left: '38%' },
+  { top: '8%', left: '15%' },
 ];
 
 export default function WorldMap({ regions, playerLevel, completedRegions, onSelectRegion }) {
@@ -32,7 +36,7 @@ export default function WorldMap({ regions, playerLevel, completedRegions, onSel
           {/* Path lines connecting regions */}
           <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
             <path
-              d="M 15 65 Q 25 55 35 45 Q 45 35 55 25 Q 65 18 78 10"
+              d="M 10 75 Q 19 68 28 60 Q 38 54 48 48 Q 58 42 68 35 Q 77 28 85 22 Q 73 22 60 22 Q 49 16 38 10 Q 27 9 15 8"
               fill="none"
               stroke="rgba(100, 116, 139, 0.3)"
               strokeWidth="0.3"

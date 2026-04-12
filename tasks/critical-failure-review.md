@@ -175,21 +175,21 @@ date: 2026-04-12
 
 ---
 
-## Summary Matrix
+## Summary Matrix (Updated 2026-04-12 — post v2.1 ship)
 
 | Risk | Severity | Status |
 |------|----------|--------|
-| Pyodide in Next.js | 🔴 Showstopper | ✅ Mitigated: Build Phase B first |
-| Infinite loops | 🟡 High | ✅ Solved: Timeout + loop injection |
-| Code validation | 🟡 High | ✅ Mitigated: Flexible validation types |
-| Monaco browser compat | 🟡 Medium | ✅ Mitigated: Lazy load + fallback plan |
-| Bad content/pedagogy | 🟡 Medium | ✅ Mitigated: Playtesting + 70% rule |
-| LocalStorage loss | 🟢 Low-Medium | ✅ Acceptable: Export/import backup |
-| Scope creep | 🟡 High | ✅ Controlled: Ruthless V1 scoping |
-| Bundle size | 🟢 Low-Medium | ✅ Acceptable: Lazy load + caching |
+| Pyodide integration | 🔴 Was Showstopper | ✅ **RESOLVED** — works via CDN script tag in Vite (not Next.js). Deployed and tested on Vercel |
+| Infinite loops | 🟡 High | ⚠️ **OPEN** — No timeout or loop injection implemented yet. V2 priority #1 |
+| Code validation | 🟡 High | ✅ **RESOLVED** — exact/contains/regex validation types implemented per quest |
+| Monaco browser compat | 🟡 Medium | ✅ **RESOLVED** — Monaco works in production. Bundle: 179.99 KB total (gzip: 53.53 KB) |
+| Bad content/pedagogy | 🟡 Medium | ⚠️ **IN PROGRESS** — 40 quests written, needs playtesting with real beginners |
+| LocalStorage loss | 🟢 Low-Medium | ⚠️ **OPEN** — No export/import yet. Auth added but still localStorage-based |
+| Scope creep | 🟡 High | ✅ **CONTROLLED** — Shipped 8 regions, auth, dual modes. V2 features clearly separated |
+| Bundle size | 🟢 Low-Medium | ✅ **RESOLVED** — PWA caching via vite-plugin-pwa. Pyodide cached after first load |
 
-> [!success] Overall Verdict
-> **NO SHOWSTOPPERS remain after mitigation.** The single highest-risk item (Pyodide integration) is addressed by making it Phase B — the first thing built after scaffolding. If Phase B fails, you've invested 15 minutes of setup, not 15 hours of game features. Every other risk has a tested mitigation strategy used by production coding games.
+> [!success] Overall Verdict (Post-Ship)
+> **V2.1 is live and playable.** The original showstopper (Pyodide) was resolved by building on the existing Vite codebase. Two remaining open risks: infinite loop protection (V2 priority) and localStorage data loss (mitigated by future Supabase migration). Content quality needs real-user playtesting.
 
 ---
 

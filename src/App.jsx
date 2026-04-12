@@ -3,7 +3,8 @@ import {
   Rocket, BookOpen, Terminal, Award, Cpu, Zap, ChevronRight,
   MessageSquare, Sparkles, Volume2, X, ShieldCheck, Code2,
   Brain, Flame, AlertTriangle, Trophy, BarChart3, ExternalLink,
-  ChevronDown, GraduationCap, Lightbulb, Target, Swords, Map
+  ChevronDown, GraduationCap, Lightbulb, Target, Swords, Map,
+  Home, LogOut
 } from 'lucide-react';
 
 // Data
@@ -18,6 +19,8 @@ import CodePlayground from './components/CodePlayground';
 import DailyChallenge from './components/DailyChallenge';
 import MistakesPanel from './components/MistakesPanel';
 import RPGGame from './components/rpg/RPGGame';
+import ModePicker from './components/ModePicker';
+import AuthModal, { getStoredUser, clearStoredUser } from './components/AuthModal';
 
 // Hooks & Utils
 import { useProgress } from './hooks/useProgress';
@@ -34,9 +37,8 @@ const TABS = [
 ];
 
 const App = () => {
-  const [gameMode, setGameMode] = useState(() => {
-    try { return localStorage.getItem('aeropython-mode') || 'academy'; } catch { return 'academy'; }
-  });
+  // 'picker' = landing page, 'academy' = curriculum, 'rpg' = game
+  const [gameMode, setGameMode] = useState('picker');
   const [activeWeek, setActiveWeek] = useState(1);
   const [activeTab, setActiveTab] = useState('mission');
   const [showTutor, setShowTutor] = useState(false);
@@ -47,16 +49,13 @@ const App = () => {
   const [badgeUrl, setBadgeUrl] = useState(null);
   const [isGeneratingBadge, setIsGeneratingBadge] = useState(false);
   const [showMobileNav, setShowMobileNav] = useState(false);
+  const [user, setUser] = useState(() => getStoredUser());
+  const [showAuth, setShowAuth] = useState(false);
 
   // ALL hooks must be called before any conditional return (React Rules of Hooks)
   const { progress, stats, completeModule, recordQuizScore, completeDailyChallenge, addBadge, addXP, resetProgress } = useProgress();
 
   const currentModule = roadmap[activeWeek - 1];
-
-  // Persist game mode
-  useEffect(() => {
-    try { localStorage.setItem('aeropython-mode', gameMode); } catch {}
-  }, [gameMode]);
 
   // Reset transient state on module change
   useEffect(() => {
@@ -71,7 +70,33 @@ const App = () => {
     }
   }, [activeWeek]);
 
-  // If RPG mode, render the RPG game instead
+  const handleLogout = () => {
+    clearStoredUser();
+    setUser(null);
+    setGameMode('picker');
+  };
+
+  // ── Landing page (mode picker) ──
+  if (gameMode === 'picker') {
+    return (
+      <>
+        <ModePicker
+          onSelectMode={setGameMode}
+          stats={stats}
+          user={user}
+          onLoginClick={() => setShowAuth(true)}
+        />
+        {showAuth && (
+          <AuthModal
+            onClose={() => setShowAuth(false)}
+            onLogin={(u) => { setUser(u); setShowAuth(false); }}
+          />
+        )}
+      </>
+    );
+  }
+
+  // ── RPG mode ──
   if (gameMode === 'rpg') {
     return (
       <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-cyan-500/30 overflow-x-hidden relative isolate">
@@ -80,7 +105,7 @@ const App = () => {
           <div className="absolute bottom-1/4 right-1/4 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-purple-600 rounded-full blur-[100px] md:blur-[150px] animate-pulse delay-1000"></div>
         </div>
         <div className="max-w-7xl mx-auto px-4 py-6 relative z-10">
-          <RPGGame onExit={() => setGameMode('academy')} />
+          <RPGGame onExit={() => setGameMode('picker')} />
         </div>
       </div>
     );
@@ -169,14 +194,31 @@ const App = () => {
               <ShieldCheck className="w-3 h-3" />
               <span className="hidden sm:inline">{apiKey ? 'API ONLINE' : 'API OFFLINE'}</span>
             </div>
-            {/* RPG Mode toggle */}
+            {/* Home button */}
             <button
-              onClick={() => setGameMode('rpg')}
-              className="flex items-center gap-1.5 px-3 py-1.5 bg-purple-500/10 border border-purple-500/30 rounded-full text-[10px] font-black text-purple-400 transition-all hover:scale-105 active:scale-95 hover:bg-purple-500/20"
+              onClick={() => setGameMode('picker')}
+              className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 border border-slate-700 rounded-full text-[10px] font-black text-slate-300 transition-all hover:scale-105 active:scale-95 hover:border-slate-600"
             >
-              <Swords className="w-3 h-3" />
-              <span className="hidden sm:inline">RPG Mode</span>
+              <Home className="w-3 h-3" />
+              <span className="hidden sm:inline">Home</span>
             </button>
+            {/* User / Auth */}
+            {user ? (
+              <button
+                onClick={handleLogout}
+                className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-full text-[10px] font-black text-slate-400 transition-all hover:scale-105 active:scale-95 hover:text-red-400 hover:border-red-500/30"
+              >
+                <LogOut className="w-3 h-3" />
+                <span className="hidden sm:inline">{user.email?.split('@')[0]}</span>
+              </button>
+            ) : (
+              <button
+                onClick={() => setShowAuth(true)}
+                className="flex items-center gap-1.5 px-3 py-1.5 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-[10px] font-black text-cyan-400 transition-all hover:scale-105 active:scale-95"
+              >
+                <span className="hidden sm:inline">Sign In</span>
+              </button>
+            )}
             {/* Daily challenge shortcut */}
             <button
               onClick={() => setShowDaily(true)}
@@ -533,6 +575,14 @@ const App = () => {
         @keyframes animate-in { from { opacity: 0; transform: translateY(-4px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
         .animate-in { animation: animate-in 0.3s ease-out; }
       `}</style>
+
+      {/* Auth Modal */}
+      {showAuth && (
+        <AuthModal
+          onClose={() => setShowAuth(false)}
+          onLogin={(u) => { setUser(u); setShowAuth(false); }}
+        />
+      )}
     </div>
   );
 };
