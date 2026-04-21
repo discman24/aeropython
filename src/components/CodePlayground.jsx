@@ -165,7 +165,7 @@ builtins.input = _mock_input
             <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/60"></div>
             <div className="w-2.5 h-2.5 rounded-full bg-green-500/60"></div>
           </div>
-          <span className="text-[9px] font-bold text-slate-600 uppercase tracking-widest ml-2">mission_{moduleId}.py</span>
+          <span className="text-sm font-bold text-slate-600 uppercase tracking-widest ml-2">mission_{moduleId}.py</span>
         </div>
         <div className="flex items-center gap-1.5">
           <button
@@ -185,7 +185,7 @@ builtins.input = _mock_input
           <button
             onClick={runCode}
             disabled={isRunning || pyLoading}
-            className="ml-1 px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-[10px] font-black flex items-center gap-1.5 transition-all disabled:opacity-50 hover:scale-105 active:scale-95 uppercase tracking-wider"
+            className="ml-1 px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-sm font-black flex items-center gap-1.5 transition-all disabled:opacity-50 hover:scale-105 active:scale-95 uppercase tracking-wider"
           >
             {isRunning || pyLoading ? (
               <Loader2 className="w-3 h-3 animate-spin" />
@@ -202,7 +202,7 @@ builtins.input = _mock_input
         {/* Line numbers */}
         <div
           ref={lineCountRef}
-          className="w-10 flex-shrink-0 bg-slate-950 text-right pr-2 py-3 text-[11px] text-slate-700 font-mono leading-[1.625rem] select-none overflow-hidden border-r border-slate-900"
+          className="w-10 flex-shrink-0 bg-slate-950 text-right pr-2 py-3 text-sm text-slate-700 font-mono leading-[1.625rem] select-none overflow-hidden border-r border-slate-900"
         >
           {Array.from({ length: lineCount }, (_, i) => (
             <div key={i}>{i + 1}</div>
@@ -227,7 +227,7 @@ builtins.input = _mock_input
         <div className="border-t border-slate-800">
           <div className="px-4 py-1.5 bg-slate-900/50 flex items-center gap-2">
             <div className={`w-1.5 h-1.5 rounded-full ${isRunning ? 'bg-amber-400 animate-pulse' : output.includes('Error') || output.includes('⚠️') ? 'bg-red-400' : 'bg-emerald-400'}`}></div>
-            <span className="text-[9px] font-black text-slate-600 uppercase tracking-widest">Output</span>
+            <span className="text-sm font-black text-slate-600 uppercase tracking-widest">Output</span>
           </div>
           <pre className="px-4 py-3 text-sm font-mono text-slate-300 max-h-48 overflow-auto whitespace-pre-wrap leading-relaxed">
             {isRunning ? '⏳ Running...' : output}
@@ -236,7 +236,7 @@ builtins.input = _mock_input
       )}
 
       {/* Status bar */}
-      <div className="px-4 py-1.5 bg-slate-900/30 border-t border-slate-800/50 flex items-center justify-between text-[9px] text-slate-700 font-bold">
+      <div className="px-4 py-1.5 bg-slate-900/30 border-t border-slate-800/50 flex items-center justify-between text-sm text-slate-700 font-bold">
         <span>
           {pyReady ? '🐍 Python 3.12 (Pyodide)' : pyLoading ? '⏳ Loading Python runtime...' : '💡 Click Run to load Python'}
         </span>

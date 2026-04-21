@@ -36,7 +36,7 @@ export default function MistakesPanel({ mistakes = [] }) {
             <div className="px-4 pb-4 space-y-3 animate-in fade-in slide-in-from-top-2 duration-200">
               {/* Wrong */}
               <div>
-                <span className="text-[9px] font-black text-red-400 uppercase tracking-widest block mb-1.5">❌ Wrong</span>
+                <span className="text-sm font-black text-red-400 uppercase tracking-widest block mb-1.5">❌ Wrong</span>
                 <pre className="text-xs font-mono text-red-300/80 bg-red-500/5 border border-red-500/10 p-3 rounded-lg whitespace-pre-wrap leading-relaxed">
                   {m.wrong}
                 </pre>
@@ -44,7 +44,7 @@ export default function MistakesPanel({ mistakes = [] }) {
 
               {/* Right */}
               <div>
-                <span className="text-[9px] font-black text-emerald-400 uppercase tracking-widest block mb-1.5">✅ Correct</span>
+                <span className="text-sm font-black text-emerald-400 uppercase tracking-widest block mb-1.5">✅ Correct</span>
                 <pre className="text-xs font-mono text-emerald-300/80 bg-emerald-500/5 border border-emerald-500/10 p-3 rounded-lg whitespace-pre-wrap leading-relaxed">
                   {m.right}
                 </pre>

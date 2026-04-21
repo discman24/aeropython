@@ -31,7 +31,7 @@ function FloatingParticle({ index }) {
   const symbols = ['✦', '★', '◆', '✸', '❋', '✺', '❆', '✿'];
   return (
     <div
-      className="absolute pointer-events-none text-[10px] animate-bounce select-none"
+      className="absolute pointer-events-none text-sm animate-bounce select-none"
       style={{
         color,
         opacity: 0.3,
@@ -85,7 +85,7 @@ export default function ModePicker({ onSelectMode, stats, user, onLoginClick }) 
               Aero<span className="text-cyan-400">Python</span>
             </h1>
           </div>
-          <p className="text-[10px] font-black text-slate-600 uppercase tracking-[0.3em] mb-4">
+          <p className="text-sm font-black text-slate-600 uppercase tracking-[0.3em] mb-4">
             Antigravity Academy
           </p>
           <p className="text-slate-400 text-sm md:text-base max-w-md mx-auto leading-relaxed">
@@ -97,7 +97,7 @@ export default function ModePicker({ onSelectMode, stats, user, onLoginClick }) 
         <div className="flex justify-center mb-8">
           {user ? (
             <div className="flex items-center gap-3 px-4 py-2 bg-slate-900 border border-slate-800 rounded-full">
-              <div className="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center text-[10px] font-black text-cyan-400">
+              <div className="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center text-sm font-black text-cyan-400">
                 {user.email?.[0]?.toUpperCase() || '?'}
               </div>
               <span className="text-xs font-bold text-slate-300">{user.email}</span>
@@ -116,12 +116,12 @@ export default function ModePicker({ onSelectMode, stats, user, onLoginClick }) 
         {/* Academy stats bar */}
         {stats && (
           <div className="flex items-center justify-center gap-3 mb-8 flex-wrap">
-            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-full text-[10px] font-black">
+            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-full text-sm font-black">
               <Zap className="w-3 h-3 text-amber-400" />
               <span className="text-amber-400 tabular-nums">{stats.totalXP}</span>
               <span className="text-slate-600">XP</span>
             </div>
-            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-full text-[10px] font-black">
+            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-full text-sm font-black">
               <Trophy className="w-3 h-3 text-cyan-400" />
               <span className="text-cyan-400 tabular-nums">{stats.modulesCompleted}/12</span>
               <span className="text-slate-600">missions</span>
@@ -148,7 +148,7 @@ export default function ModePicker({ onSelectMode, stats, user, onLoginClick }) 
               {/* FEATURED badge */}
               <div className="absolute top-4 right-4 flex items-center gap-1.5 px-2.5 py-1 bg-gradient-to-r from-purple-600/80 to-pink-600/80 rounded-full">
                 <Star className="w-2.5 h-2.5 text-white" />
-                <span className="text-[8px] font-black text-white uppercase tracking-wider">Featured</span>
+                <span className="text-xs font-black text-white uppercase tracking-wider">Featured</span>
               </div>
 
               <div className="relative z-10">
@@ -159,7 +159,7 @@ export default function ModePicker({ onSelectMode, stats, user, onLoginClick }) 
                   </div>
                   <div>
                     <h2 className="text-2xl md:text-3xl font-black text-white leading-tight">RPG Mode</h2>
-                    <p className="text-[10px] font-black text-purple-400 uppercase tracking-widest">Coding Realm</p>
+                    <p className="text-sm font-black text-purple-400 uppercase tracking-widest">Coding Realm</p>
                   </div>
                 </div>
 
@@ -171,7 +171,7 @@ export default function ModePicker({ onSelectMode, stats, user, onLoginClick }) 
                 {/* Returning hero stats */}
                 {rpgStats ? (
                   <div className="mb-5 p-3 bg-slate-950/60 rounded-xl border border-purple-500/20">
-                    <div className="text-[8px] font-black text-slate-600 uppercase tracking-widest mb-2">Your Hero — {rpgStats.heroName}</div>
+                    <div className="text-xs font-black text-slate-600 uppercase tracking-widest mb-2">Your Hero — {rpgStats.heroName}</div>
                     <div className="grid grid-cols-4 gap-2">
                       {[
                         { icon: <Crown className="w-3 h-3 text-purple-400" />, val: `AR ${rpgStats.ar}`, label: 'Rank' },
@@ -182,7 +182,7 @@ export default function ModePicker({ onSelectMode, stats, user, onLoginClick }) 
                         <div key={s.label} className="text-center">
                           <div className="flex justify-center mb-0.5">{s.icon}</div>
                           <div className="text-xs font-black text-white">{s.val}</div>
-                          <div className="text-[7px] font-bold text-slate-600 uppercase">{s.label}</div>
+                          <div className="text-xs font-bold text-slate-600 uppercase">{s.label}</div>
                         </div>
                       ))}
                     </div>
@@ -190,7 +190,7 @@ export default function ModePicker({ onSelectMode, stats, user, onLoginClick }) 
                 ) : (
                   <div className="mb-5 flex flex-wrap gap-2">
                     {['8 Regions', '40 Quests', 'Boss Battles', '5 Companions', 'Achievements', 'Daily Commissions'].map(f => (
-                      <span key={f} className="px-2.5 py-1 bg-purple-500/10 border border-purple-500/20 rounded-full text-[9px] font-black text-purple-400 uppercase tracking-wider">
+                      <span key={f} className="px-2.5 py-1 bg-purple-500/10 border border-purple-500/20 rounded-full text-sm font-black text-purple-400 uppercase tracking-wider">
                         {f}
                       </span>
                     ))}
@@ -234,7 +234,7 @@ export default function ModePicker({ onSelectMode, stats, user, onLoginClick }) 
                 </p>
                 <div className="flex items-center gap-2 mt-2 flex-wrap">
                   {['12 Missions', 'Code Lab', 'AI Tutor', 'Quizzes'].map(f => (
-                    <span key={f} className="px-2 py-0.5 bg-cyan-500/8 border border-cyan-500/15 rounded-full text-[8px] font-black text-cyan-500/70 uppercase tracking-wider">
+                    <span key={f} className="px-2 py-0.5 bg-cyan-500/8 border border-cyan-500/15 rounded-full text-xs font-black text-cyan-500/70 uppercase tracking-wider">
                       {f}
                     </span>
                   ))}
@@ -247,7 +247,7 @@ export default function ModePicker({ onSelectMode, stats, user, onLoginClick }) 
 
         {/* Footer */}
         <div className="text-center mt-10">
-          <p className="text-[8px] font-black text-slate-700 uppercase tracking-[0.3em]">
+          <p className="text-xs font-black text-slate-700 uppercase tracking-[0.3em]">
             AeroPython Protocol v2.2 — Choose your path
           </p>
         </div>

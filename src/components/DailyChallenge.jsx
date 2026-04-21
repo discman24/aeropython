@@ -42,7 +42,7 @@ export default function DailyChallenge({ challenges = [], streak = 0, hasDoneTod
             {streak > 0 ? `${streak}-day streak!` : 'Start a streak!'}
           </span>
         </div>
-        <span className={`text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full ${diffColor}`}>
+        <span className={`text-sm font-black uppercase tracking-widest px-2.5 py-1 rounded-full ${diffColor}`}>
           {challenge.difficulty} • +{challenge.xp} XP
         </span>
       </div>
@@ -55,7 +55,7 @@ export default function DailyChallenge({ challenges = [], streak = 0, hasDoneTod
         {/* Hint toggle */}
         <button
           onClick={() => setShowHint(!showHint)}
-          className="flex items-center gap-2 text-[10px] font-bold text-slate-500 hover:text-cyan-400 transition-colors"
+          className="flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-cyan-400 transition-colors"
         >
           {showHint ? <EyeOff className="w-3 h-3" /> : <Eye className="w-3 h-3" />}
           {showHint ? 'Hide Hint' : 'Show Hint'}
@@ -69,7 +69,7 @@ export default function DailyChallenge({ challenges = [], streak = 0, hasDoneTod
         {/* Solution toggle */}
         <button
           onClick={() => setShowSolution(!showSolution)}
-          className="flex items-center gap-2 text-[10px] font-bold text-slate-500 hover:text-amber-400 transition-colors"
+          className="flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-amber-400 transition-colors"
         >
           {showSolution ? <EyeOff className="w-3 h-3" /> : <Eye className="w-3 h-3" />}
           {showSolution ? 'Hide Solution' : 'Reveal Solution'}

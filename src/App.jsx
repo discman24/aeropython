@@ -167,37 +167,37 @@ const App = () => {
               <h1 className="text-xl md:text-2xl font-black italic tracking-tighter leading-none uppercase">
                 Aero<span className="text-cyan-400">Python</span>
               </h1>
-              <p className="text-[9px] font-bold text-slate-500 uppercase tracking-[0.2em] mt-0.5">Antigravity Academy</p>
+              <p className="text-sm font-bold text-slate-500 uppercase tracking-[0.2em] mt-0.5">Antigravity Academy</p>
             </div>
           </div>
 
           {/* Stats bar */}
           <div className="flex items-center gap-3 flex-wrap justify-center">
             {/* XP */}
-            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-full text-[10px] font-black">
+            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-full text-sm font-black">
               <Zap className="w-3 h-3 text-amber-400" />
               <span className="text-amber-400 tabular-nums">{stats.totalXP}</span>
               <span className="text-slate-600">XP</span>
             </div>
             {/* Streak */}
-            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-full text-[10px] font-black">
+            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-full text-sm font-black">
               <Flame className={`w-3 h-3 ${stats.currentStreak > 0 ? 'text-orange-400' : 'text-slate-600'}`} />
               <span className={stats.currentStreak > 0 ? 'text-orange-400' : 'text-slate-600'}>{stats.currentStreak}</span>
             </div>
             {/* Modules done */}
-            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-full text-[10px] font-black">
+            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-full text-sm font-black">
               <Trophy className="w-3 h-3 text-cyan-400" />
               <span className="text-cyan-400 tabular-nums">{stats.modulesCompleted}/40</span>
             </div>
             {/* API status */}
-            <div className={`flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 border rounded-full text-[10px] font-black transition-all ${apiKey ? 'border-cyan-500/50 text-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.15)]' : 'border-red-500/50 text-red-400'}`}>
+            <div className={`flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 border rounded-full text-sm font-black transition-all ${apiKey ? 'border-cyan-500/50 text-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.15)]' : 'border-red-500/50 text-red-400'}`}>
               <ShieldCheck className="w-3 h-3" />
               <span className="hidden sm:inline">{apiKey ? 'API ONLINE' : 'API OFFLINE'}</span>
             </div>
             {/* Home button */}
             <button
               onClick={() => setGameMode('picker')}
-              className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 border border-slate-700 rounded-full text-[10px] font-black text-slate-300 transition-all hover:scale-105 active:scale-95 hover:border-slate-600"
+              className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 border border-slate-700 rounded-full text-sm font-black text-slate-300 transition-all hover:scale-105 active:scale-95 hover:border-slate-600"
             >
               <Home className="w-3 h-3" />
               <span className="hidden sm:inline">Home</span>
@@ -206,7 +206,7 @@ const App = () => {
             {user ? (
               <button
                 onClick={handleLogout}
-                className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-full text-[10px] font-black text-slate-400 transition-all hover:scale-105 active:scale-95 hover:text-red-400 hover:border-red-500/30"
+                className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-full text-sm font-black text-slate-400 transition-all hover:scale-105 active:scale-95 hover:text-red-400 hover:border-red-500/30"
               >
                 <LogOut className="w-3 h-3" />
                 <span className="hidden sm:inline">{user.email?.split('@')[0]}</span>
@@ -214,7 +214,7 @@ const App = () => {
             ) : (
               <button
                 onClick={() => setShowAuth(true)}
-                className="flex items-center gap-1.5 px-3 py-1.5 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-[10px] font-black text-cyan-400 transition-all hover:scale-105 active:scale-95"
+                className="flex items-center gap-1.5 px-3 py-1.5 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-sm font-black text-cyan-400 transition-all hover:scale-105 active:scale-95"
               >
                 <span className="hidden sm:inline">Sign In</span>
               </button>
@@ -222,7 +222,7 @@ const App = () => {
             {/* Daily challenge shortcut */}
             <button
               onClick={() => setShowDaily(true)}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-black transition-all hover:scale-105 active:scale-95 ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-black transition-all hover:scale-105 active:scale-95 ${
                 stats.hasDoneToday
                   ? 'bg-emerald-500/10 border border-emerald-500/30 text-emerald-400'
                   : 'bg-orange-500/10 border border-orange-500/30 text-orange-400 animate-pulse'
@@ -252,8 +252,8 @@ const App = () => {
 
             <div className={`space-y-1.5 ${showMobileNav ? 'block' : 'hidden'} lg:block`}>
               <div className="flex items-center justify-between px-2 mb-2">
-                <h2 className="text-[10px] font-black text-slate-600 uppercase tracking-[0.2em]">Mission Map</h2>
-                <span className="text-[10px] font-bold text-cyan-500 bg-cyan-500/10 px-2 py-0.5 rounded-full tabular-nums">
+                <h2 className="text-sm font-black text-slate-600 uppercase tracking-[0.2em]">Mission Map</h2>
+                <span className="text-sm font-bold text-cyan-500 bg-cyan-500/10 px-2 py-0.5 rounded-full tabular-nums">
                   {stats.percentComplete}%
                 </span>
               </div>
@@ -275,7 +275,7 @@ const App = () => {
                             : 'bg-slate-900/20 border-slate-800/50 hover:border-slate-700 opacity-50 hover:opacity-100'
                       }`}
                     >
-                      <div className={`w-7 h-7 rounded-lg flex-shrink-0 flex items-center justify-center font-bold text-[10px] ${
+                      <div className={`w-7 h-7 rounded-lg flex-shrink-0 flex items-center justify-center font-bold text-sm ${
                         activeWeek === step.id
                           ? 'bg-cyan-500 text-slate-950 shadow-md'
                           : isCompleted
@@ -286,10 +286,10 @@ const App = () => {
                       </div>
                       <div className="flex-1 min-w-0">
                         <h3 className="font-bold text-xs leading-tight truncate">{step.title}</h3>
-                        <p className="text-[8px] text-slate-600 uppercase font-black tracking-wider truncate">{step.topic}</p>
+                        <p className="text-xs text-slate-600 uppercase font-black tracking-wider truncate">{step.topic}</p>
                       </div>
                       {quizScore && (
-                        <span className="text-[8px] font-bold text-slate-600 tabular-nums">{quizScore.best}/{quizScore.total}</span>
+                        <span className="text-xs font-bold text-slate-600 tabular-nums">{quizScore.best}/{quizScore.total}</span>
                       )}
                       {activeWeek === step.id && <Zap className="w-3 h-3 text-cyan-400 animate-pulse flex-shrink-0" />}
                     </button>
@@ -300,7 +300,7 @@ const App = () => {
               {/* Reset button */}
               <button
                 onClick={resetProgress}
-                className="w-full mt-3 py-2 text-[9px] font-bold text-slate-700 hover:text-red-400 uppercase tracking-widest transition-colors"
+                className="w-full mt-3 py-2 text-sm font-bold text-slate-700 hover:text-red-400 uppercase tracking-widest transition-colors"
               >
                 Reset All Progress
               </button>
@@ -318,7 +318,7 @@ const App = () => {
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`flex-1 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all ${
+                    className={`flex-1 py-2.5 rounded-xl text-sm font-black uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all ${
                       activeTab === tab.id
                         ? 'bg-slate-800 text-white shadow-md'
                         : 'text-slate-500 hover:text-slate-300 hover:bg-slate-800/30'
@@ -345,7 +345,7 @@ const App = () => {
                   <div>
                     <div className="flex items-center gap-2 mb-2">
                       <span className="w-4 h-[1px] bg-cyan-500"></span>
-                      <span className="text-[10px] font-black text-cyan-500 uppercase tracking-[0.4em]">Mission {activeWeek}</span>
+                      <span className="text-sm font-black text-cyan-500 uppercase tracking-[0.4em]">Mission {activeWeek}</span>
                     </div>
                     <h2 className="text-2xl md:text-4xl font-black tracking-tighter leading-tight">{currentModule.title}</h2>
                     <p className="text-slate-400 text-xs mt-1 uppercase font-bold tracking-widest">{currentModule.topic}</p>
@@ -353,7 +353,7 @@ const App = () => {
 
                   {/* Objectives */}
                   <div className="p-5 bg-slate-950/50 border border-slate-800 rounded-xl">
-                    <h4 className="text-[9px] font-black text-slate-500 uppercase mb-3 flex items-center gap-2">
+                    <h4 className="text-sm font-black text-slate-500 uppercase mb-3 flex items-center gap-2">
                       <GraduationCap className="w-3.5 h-3.5 text-cyan-500" /> Learning Objectives
                     </h4>
                     <ul className="space-y-2">
@@ -368,7 +368,7 @@ const App = () => {
 
                   {/* Challenge */}
                   <div className="p-5 bg-slate-950/50 border border-slate-800 rounded-xl">
-                    <h4 className="text-[9px] font-black text-slate-500 uppercase mb-3 flex items-center gap-2">
+                    <h4 className="text-sm font-black text-slate-500 uppercase mb-3 flex items-center gap-2">
                       <Terminal className="w-3 h-3 text-cyan-500" /> Mission Objective
                     </h4>
                     <p className="text-base md:text-lg font-medium text-slate-200 leading-relaxed">
@@ -378,7 +378,7 @@ const App = () => {
 
                   {/* Key Concepts */}
                   <div className="p-5 bg-slate-950/50 border border-slate-800 rounded-xl">
-                    <h4 className="text-[9px] font-black text-slate-500 uppercase mb-3 flex items-center gap-2">
+                    <h4 className="text-sm font-black text-slate-500 uppercase mb-3 flex items-center gap-2">
                       <Lightbulb className="w-3.5 h-3.5 text-amber-400" /> Key Concepts
                     </h4>
                     <div className="grid gap-2">
@@ -395,13 +395,13 @@ const App = () => {
                   <div className="flex flex-col sm:flex-row gap-3">
                     <button
                       onClick={() => setShowTutor(true)}
-                      className="flex-1 py-3.5 bg-slate-800 hover:bg-slate-700 rounded-xl font-bold text-[10px] flex items-center justify-center gap-2 transition-all hover:scale-[1.02] active:scale-95 uppercase tracking-wider"
+                      className="flex-1 py-3.5 bg-slate-800 hover:bg-slate-700 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all hover:scale-[1.02] active:scale-95 uppercase tracking-wider"
                     >
                       <MessageSquare className="w-4 h-4 text-cyan-400" /> AI Mentor
                     </button>
                     <button
                       onClick={handleBadge}
-                      className="flex-1 py-3.5 bg-cyan-600 hover:bg-cyan-500 text-slate-950 rounded-xl font-bold text-[10px] flex items-center justify-center gap-2 transition-all shadow-lg shadow-cyan-600/20 hover:scale-[1.02] active:scale-95 uppercase tracking-wider"
+                      className="flex-1 py-3.5 bg-cyan-600 hover:bg-cyan-500 text-slate-950 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all shadow-lg shadow-cyan-600/20 hover:scale-[1.02] active:scale-95 uppercase tracking-wider"
                     >
                       <Award className="w-4 h-4" /> Claim Badge
                     </button>
@@ -410,7 +410,7 @@ const App = () => {
                         href={currentModule.resources[0].url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 py-3.5 bg-slate-800 hover:bg-slate-700 rounded-xl font-bold text-[10px] flex items-center justify-center gap-2 transition-all hover:scale-[1.02] active:scale-95 uppercase tracking-wider"
+                        className="flex-1 py-3.5 bg-slate-800 hover:bg-slate-700 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all hover:scale-[1.02] active:scale-95 uppercase tracking-wider"
                       >
                         <ExternalLink className="w-4 h-4 text-slate-400" /> Docs
                       </a>
@@ -423,7 +423,7 @@ const App = () => {
                       {isGeneratingBadge ? (
                         <div className="flex flex-col items-center gap-3">
                           <div className="w-8 h-8 border-2 border-cyan-500 border-t-transparent rounded-full animate-spin"></div>
-                          <span className="text-[8px] font-black text-slate-600 uppercase tracking-widest animate-pulse">Minting Reward...</span>
+                          <span className="text-xs font-black text-slate-600 uppercase tracking-widest animate-pulse">Minting Reward...</span>
                         </div>
                       ) : badgeUrl ? (
                         <img src={badgeUrl} alt="Badge" className="h-full object-contain" />
@@ -486,7 +486,7 @@ const App = () => {
                 <div className="flex justify-between items-center mb-5">
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></div>
-                    <span className="text-[9px] font-black text-cyan-500 tracking-[0.3em] uppercase">AI Mentor — {currentModule.topic}</span>
+                    <span className="text-sm font-black text-cyan-500 tracking-[0.3em] uppercase">AI Mentor — {currentModule.topic}</span>
                   </div>
                   <button onClick={() => setShowTutor(false)} className="cursor-pointer p-2 hover:bg-slate-800 rounded-full transition-colors">
                     <X className="w-4 h-4 text-slate-600 hover:text-white" />
@@ -511,7 +511,7 @@ const App = () => {
                 </div>
                 {tutorResponse && (
                   <div className="mt-5 p-5 bg-slate-950/80 rounded-xl border border-slate-800/50 group relative animate-in fade-in zoom-in-95 duration-500">
-                    <div className="absolute -top-2.5 left-5 px-2 bg-slate-950 text-[8px] font-black text-cyan-500 uppercase tracking-widest border border-slate-800 rounded">AERO says</div>
+                    <div className="absolute -top-2.5 left-5 px-2 bg-slate-950 text-xs font-black text-cyan-500 uppercase tracking-widest border border-slate-800 rounded">AERO says</div>
                     <p className="text-sm text-slate-300 leading-relaxed whitespace-pre-wrap">{tutorResponse}</p>
                     <button
                       onClick={() => speakText(tutorResponse)}
@@ -552,7 +552,7 @@ const App = () => {
         )}
 
         {/* ============ FOOTER ============ */}
-        <footer className="mt-auto py-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[9px] font-black text-slate-700 uppercase tracking-[0.3em]">
+        <footer className="mt-auto py-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-sm font-black text-slate-700 uppercase tracking-[0.3em]">
           <div className="flex items-center gap-4">
             <span>AeroPython Protocol v2.0</span>
             <span className="h-3 w-px bg-slate-900"></span>

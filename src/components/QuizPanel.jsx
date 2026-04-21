@@ -95,12 +95,12 @@ export default function QuizPanel({ moduleId, quizData = [], onComplete }) {
             style={{ width: `${((currentQ + 1) / questions.length) * 100}%` }}
           />
         </div>
-        <span className="text-[10px] font-black text-slate-500 tabular-nums">{currentQ + 1}/{questions.length}</span>
+        <span className="text-sm font-black text-slate-500 tabular-nums">{currentQ + 1}/{questions.length}</span>
       </div>
 
       {/* Question type badge */}
       <div className="flex items-center gap-2">
-        <span className="text-[9px] font-black text-cyan-500 uppercase tracking-[0.3em] bg-cyan-500/10 px-2 py-0.5 rounded-full">{typeLabel}</span>
+        <span className="text-sm font-black text-cyan-500 uppercase tracking-[0.3em] bg-cyan-500/10 px-2 py-0.5 rounded-full">{typeLabel}</span>
       </div>
 
       {/* Question text */}
@@ -139,7 +139,7 @@ export default function QuizPanel({ moduleId, quizData = [], onComplete }) {
               disabled={showResult}
               className={`w-full text-left p-3.5 rounded-xl border transition-all flex items-center gap-3 ${borderClass} ${bgClass} ${showResult ? 'cursor-default' : 'cursor-pointer active:scale-[0.98]'}`}
             >
-              <span className="w-6 h-6 rounded-md bg-slate-800 flex items-center justify-center text-[10px] font-bold flex-shrink-0">
+              <span className="w-6 h-6 rounded-md bg-slate-800 flex items-center justify-center text-sm font-bold flex-shrink-0">
                 {String.fromCharCode(65 + idx)}
               </span>
               <span className="text-sm flex-1">{opt}</span>
@@ -153,7 +153,7 @@ export default function QuizPanel({ moduleId, quizData = [], onComplete }) {
       {/* Explanation */}
       {showResult && (
         <div className="p-4 bg-slate-950/80 rounded-xl border border-slate-800/50 text-sm text-slate-300 leading-relaxed animate-in fade-in duration-300">
-          <span className="text-[9px] font-black text-slate-500 uppercase tracking-widest block mb-1">Explanation</span>
+          <span className="text-sm font-black text-slate-500 uppercase tracking-widest block mb-1">Explanation</span>
           {q.explanation}
         </div>
       )}

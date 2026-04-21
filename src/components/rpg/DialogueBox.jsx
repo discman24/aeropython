@@ -93,13 +93,13 @@ export default function DialogueBox({ dialogues, onComplete }) {
             {portraitData.emoji}
           </div>
           <span
-            className="text-[10px] font-black uppercase tracking-widest"
+            className="text-sm font-black uppercase tracking-widest"
             style={{ color: el.color }}
           >
             {current.speaker}
           </span>
           {/* Element indicator */}
-          <span className="text-[9px]" title={el.name}>{el.icon}</span>
+          <span className="text-sm" title={el.name}>{el.icon}</span>
         </div>
 
         {/* Dialogue progress dots */}
@@ -130,11 +130,11 @@ export default function DialogueBox({ dialogues, onComplete }) {
         {/* Advance hint */}
         {!isTyping && !showChoices && (
           <div className="flex items-center justify-between mt-3">
-            <span className="text-[8px] font-bold text-slate-700 uppercase tracking-widest">
+            <span className="text-xs font-bold text-slate-700 uppercase tracking-widest">
               {isLast ? 'Press to continue' : `${currentIndex + 1} / ${dialogues.length}`}
             </span>
             <div className="flex items-center gap-1">
-              <span className="text-[8px] font-bold text-slate-600">
+              <span className="text-xs font-bold text-slate-600">
                 {isLast ? 'Continue' : 'Next'}
               </span>
               <ChevronRight
@@ -147,7 +147,7 @@ export default function DialogueBox({ dialogues, onComplete }) {
 
         {isTyping && (
           <div className="flex justify-end mt-3">
-            <span className="text-[8px] font-bold text-slate-700 uppercase tracking-widest">Click to skip</span>
+            <span className="text-xs font-bold text-slate-700 uppercase tracking-widest">Click to skip</span>
           </div>
         )}
       </div>
@@ -164,7 +164,7 @@ export default function DialogueBox({ dialogues, onComplete }) {
                 setShowChoices(false);
                 setTimeout(() => onComplete(), 500);
               }}
-              className="text-left px-3 py-2 rounded-xl border text-[10px] font-bold text-slate-400 transition-all hover:text-white hover:scale-[1.02] active:scale-95"
+              className="text-left px-3 py-2 rounded-xl border text-sm font-bold text-slate-400 transition-all hover:text-white hover:scale-[1.02] active:scale-95"
               style={{
                 backgroundColor: el.bg,
                 borderColor: el.border,
@@ -183,7 +183,7 @@ export default function DialogueBox({ dialogues, onComplete }) {
       {chosenReaction && (
         <div className="text-right animate-in fade-in duration-200">
           <span
-            className="text-[10px] font-bold px-3 py-1.5 rounded-xl inline-block"
+            className="text-sm font-bold px-3 py-1.5 rounded-xl inline-block"
             style={{ color: el.color, backgroundColor: el.bg }}
           >
             You: "{chosenReaction}"

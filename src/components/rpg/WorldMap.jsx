@@ -25,7 +25,7 @@ function ElementParticles({ element, count = 6 }) {
       {Array.from({ length: count }, (_, i) => (
         <span
           key={i}
-          className="absolute pointer-events-none text-[8px] animate-ping select-none"
+          className="absolute pointer-events-none text-xs animate-ping select-none"
           style={{
             color: el.color,
             opacity: 0.5,
@@ -169,21 +169,21 @@ export default function WorldMap({ regions, playerAR, playerLevel, completedRegi
                   `}
                 >
                   <div
-                    className={`text-[9px] md:text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full`}
+                    className={`text-sm md:text-sm font-black uppercase tracking-wider px-2 py-0.5 rounded-full`}
                     style={isActive ? { color: el.color, backgroundColor: el.bg } : { color: '#475569' }}
                   >
                     {region.name}
                   </div>
                   {isLocked && (
-                    <div className="text-[7px] text-slate-700 mt-0.5 font-bold">AR {region.unlockLevel} req.</div>
+                    <div className="text-xs text-slate-700 mt-0.5 font-bold">AR {region.unlockLevel} req.</div>
                   )}
                   {isActive && !isCompleted && regionQuests.length > 0 && (
-                    <div className="text-[7px] mt-0.5 font-bold" style={{ color: el.color }}>
+                    <div className="text-xs mt-0.5 font-bold" style={{ color: el.color }}>
                       {questsDoneInRegion}/{regionQuests.length} quests
                     </div>
                   )}
                   {isCompleted && (
-                    <div className="text-[7px] text-emerald-400 mt-0.5 font-bold">★ Complete</div>
+                    <div className="text-xs text-emerald-400 mt-0.5 font-bold">★ Complete</div>
                   )}
                 </div>
 
@@ -256,7 +256,7 @@ export default function WorldMap({ regions, playerAR, playerLevel, completedRegi
                   {/* Element badge */}
                   {isActive && !isLocked && (
                     <div
-                      className="absolute -top-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center text-[9px] border border-slate-900"
+                      className="absolute -top-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center text-sm border border-slate-900"
                       style={{ backgroundColor: el.bg, boxShadow: `0 0 6px ${el.color}44` }}
                     >
                       {el.icon}
@@ -271,7 +271,7 @@ export default function WorldMap({ regions, playerAR, playerLevel, completedRegi
 
       {/* Legend bar */}
       <div className="px-4 py-3 bg-slate-900/90 border-t border-slate-800 flex items-center justify-between flex-wrap gap-2">
-        <div className="flex items-center gap-4 text-[8px] font-bold text-slate-600 uppercase tracking-wider flex-wrap">
+        <div className="flex items-center gap-4 text-xs font-bold text-slate-600 uppercase tracking-wider flex-wrap">
           <span className="flex items-center gap-1.5">
             <div className="w-2.5 h-2.5 rounded-full bg-cyan-500/50"></div>
             Available
@@ -295,7 +295,7 @@ export default function WorldMap({ regions, playerAR, playerLevel, completedRegi
           {Object.entries(ELEMENTS).filter(([k]) => k !== 'variables').map(([, el]) => (
             <span
               key={el.name}
-              className="text-[9px] px-1.5 py-0.5 rounded-md font-bold"
+              className="text-sm px-1.5 py-0.5 rounded-md font-bold"
               style={{ color: el.color, backgroundColor: el.bg }}
               title={el.name}
             >

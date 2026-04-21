@@ -122,7 +122,7 @@ export default function RPGGame({ onExit }) {
             </h1>
             <div className="flex items-center justify-center gap-2">
               <div className="w-8 h-px bg-slate-700" />
-              <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.4em]">
+              <p className="text-sm font-black text-slate-500 uppercase tracking-[0.4em]">
                 Coding Realm RPG
               </p>
               <div className="w-8 h-px bg-slate-700" />
@@ -133,7 +133,7 @@ export default function RPGGame({ onExit }) {
         {/* Feature pills */}
         <div className="flex flex-wrap items-center justify-center gap-2 max-w-sm">
           {['8 Regions', '40 Quests', 'Boss Battles', '5 Companions', 'Achievements'].map(f => (
-            <span key={f} className="px-3 py-1 bg-slate-900 border border-slate-800 rounded-full text-[9px] font-black text-slate-500 uppercase tracking-wider">
+            <span key={f} className="px-3 py-1 bg-slate-900 border border-slate-800 rounded-full text-sm font-black text-slate-500 uppercase tracking-wider">
               {f}
             </span>
           ))}
@@ -142,7 +142,7 @@ export default function RPGGame({ onExit }) {
         {/* Name input */}
         <div className="space-y-4 w-full max-w-xs">
           <div>
-            <label className="text-[9px] font-black text-slate-600 uppercase tracking-widest block mb-2">
+            <label className="text-sm font-black text-slate-600 uppercase tracking-widest block mb-2">
               Name Your Hero
             </label>
             <input
@@ -168,7 +168,7 @@ export default function RPGGame({ onExit }) {
         {existingHero && (
           <button
             onClick={() => setGameScreen('map')}
-            className="text-[10px] font-bold text-cyan-500 hover:text-cyan-400 uppercase tracking-widest"
+            className="text-sm font-bold text-cyan-500 hover:text-cyan-400 uppercase tracking-widest"
           >
             Continue as {existingHero} (AR {playerAR}) →
           </button>
@@ -216,7 +216,7 @@ export default function RPGGame({ onExit }) {
                 {equippedComp ? equippedComp.icon : '⚔️'}
               </div>
               {equippedComp && (
-                <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-slate-950 border border-slate-700 flex items-center justify-center text-[10px]">
+                <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-slate-950 border border-slate-700 flex items-center justify-center text-sm">
                   {equippedComp.icon}
                 </div>
               )}
@@ -224,9 +224,9 @@ export default function RPGGame({ onExit }) {
             <div className="flex-1 min-w-0">
               <h3 className="font-black text-sm text-white truncate">{rpgState.heroName}</h3>
               <div className="flex items-center gap-2 mt-0.5">
-                <span className="text-[9px] font-bold text-cyan-500 uppercase tracking-wider">Lv.{playerLevel}</span>
-                <span className="text-[9px] text-slate-700">•</span>
-                <span className="text-[9px] font-bold text-amber-400 uppercase tracking-wider">AR {playerAR}</span>
+                <span className="text-sm font-bold text-cyan-500 uppercase tracking-wider">Lv.{playerLevel}</span>
+                <span className="text-sm text-slate-700">•</span>
+                <span className="text-sm font-bold text-amber-400 uppercase tracking-wider">AR {playerAR}</span>
               </div>
             </div>
           </div>
@@ -234,8 +234,8 @@ export default function RPGGame({ onExit }) {
           {/* XP bar */}
           <div className="mb-2">
             <div className="flex justify-between mb-1">
-              <span className="text-[8px] font-black text-slate-600 uppercase tracking-wider">Character XP</span>
-              <span className="text-[8px] font-bold text-amber-400 tabular-nums">{xpInLevel}/{XP_PER_LEVEL}</span>
+              <span className="text-xs font-black text-slate-600 uppercase tracking-wider">Character XP</span>
+              <span className="text-xs font-bold text-amber-400 tabular-nums">{xpInLevel}/{XP_PER_LEVEL}</span>
             </div>
             <div className="h-1.5 bg-slate-800 rounded-full overflow-hidden">
               <div className="h-full bg-gradient-to-r from-amber-600 to-amber-400 rounded-full transition-all duration-700" style={{ width: `${xpPercent}%` }} />
@@ -245,8 +245,8 @@ export default function RPGGame({ onExit }) {
           {/* AR bar */}
           <div>
             <div className="flex justify-between mb-1">
-              <span className="text-[8px] font-black text-slate-600 uppercase tracking-wider">Adventure Rank</span>
-              <span className="text-[8px] font-bold text-purple-400 tabular-nums">AR {playerAR}</span>
+              <span className="text-xs font-black text-slate-600 uppercase tracking-wider">Adventure Rank</span>
+              <span className="text-xs font-bold text-purple-400 tabular-nums">AR {playerAR}</span>
             </div>
             <div className="h-1.5 bg-slate-800 rounded-full overflow-hidden">
               <div className="h-full bg-gradient-to-r from-purple-600 to-pink-500 rounded-full transition-all duration-700" style={{ width: `${arPercent}%` }} />
@@ -259,7 +259,7 @@ export default function RPGGame({ onExit }) {
               {affinities.map((el, i) => (
                 <span
                   key={i}
-                  className="text-[10px] px-1.5 py-0.5 rounded-md font-bold"
+                  className="text-sm px-1.5 py-0.5 rounded-md font-bold"
                   style={{ backgroundColor: el.bg, color: el.color, border: `1px solid ${el.border}` }}
                   title={el.name}
                 >
@@ -276,7 +276,7 @@ export default function RPGGame({ onExit }) {
             <button
               key={t.id}
               onClick={() => setShowPanel(t.id)}
-              className={`flex-1 py-2 flex flex-col items-center gap-0.5 transition-colors text-[8px] font-black uppercase tracking-wider ${
+              className={`flex-1 py-2 flex flex-col items-center gap-0.5 transition-colors text-xs font-black uppercase tracking-wider ${
                 showPanel === t.id ? 'text-cyan-400 bg-slate-800/60' : 'text-slate-600 hover:text-slate-400'
               }`}
             >
@@ -301,7 +301,7 @@ export default function RPGGame({ onExit }) {
                   <div key={stat.label} className="bg-slate-950 rounded-lg p-2.5 text-center">
                     <div className="flex justify-center mb-1">{stat.icon}</div>
                     <div className="text-xs font-black text-white">{stat.value}</div>
-                    <div className="text-[8px] font-bold text-slate-600 uppercase tracking-wider">{stat.label}</div>
+                    <div className="text-xs font-bold text-slate-600 uppercase tracking-wider">{stat.label}</div>
                   </div>
                 ))}
               </div>
@@ -309,8 +309,8 @@ export default function RPGGame({ onExit }) {
                 <div className="bg-slate-950 rounded-lg p-2.5 flex items-center gap-2">
                   <span className="text-lg">{equippedComp.icon}</span>
                   <div>
-                    <div className="text-[10px] font-black text-white">{equippedComp.name}</div>
-                    <div className="text-[8px] text-slate-500">{equippedComp.bonus}</div>
+                    <div className="text-sm font-black text-white">{equippedComp.name}</div>
+                    <div className="text-xs text-slate-500">{equippedComp.bonus}</div>
                   </div>
                 </div>
               )}
@@ -345,8 +345,8 @@ export default function RPGGame({ onExit }) {
                   >
                     <div className="text-xl">{comp.icon}</div>
                     <div className="flex-1 min-w-0">
-                      <div className="text-[10px] font-black text-white">{comp.name}</div>
-                      <div className="text-[8px] text-slate-500 truncate">{unlocked ? comp.bonus : `AR ${comp.unlockAR} to unlock`}</div>
+                      <div className="text-sm font-black text-white">{comp.name}</div>
+                      <div className="text-xs text-slate-500 truncate">{unlocked ? comp.bonus : `AR ${comp.unlockAR} to unlock`}</div>
                     </div>
                     {equipped && <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0" />}
                     {!unlocked && <Lock className="w-3 h-3 text-slate-700 flex-shrink-0" />}
@@ -370,8 +370,8 @@ export default function RPGGame({ onExit }) {
                   >
                     <span className="text-lg">{ach.icon}</span>
                     <div className="flex-1 min-w-0">
-                      <div className={`text-[10px] font-black ${earned ? 'text-amber-400' : 'text-slate-500'}`}>{ach.name}</div>
-                      <div className="text-[8px] text-slate-600 truncate">{ach.desc}</div>
+                      <div className={`text-sm font-black ${earned ? 'text-amber-400' : 'text-slate-500'}`}>{ach.name}</div>
+                      <div className="text-xs text-slate-600 truncate">{ach.desc}</div>
                     </div>
                     {earned && <Star className="w-3 h-3 text-amber-400 flex-shrink-0" />}
                   </div>
@@ -383,7 +383,7 @@ export default function RPGGame({ onExit }) {
           {/* ── Daily Commissions ── */}
           {showPanel === 'daily' && (
             <div className="space-y-1.5">
-              <div className="text-[8px] font-black text-slate-600 uppercase tracking-widest mb-2">
+              <div className="text-xs font-black text-slate-600 uppercase tracking-widest mb-2">
                 {todayDone.length}/{DAILY_CHALLENGES.length} completed today
               </div>
               {DAILY_CHALLENGES.map(dc => {
@@ -398,8 +398,8 @@ export default function RPGGame({ onExit }) {
                   >
                     <span className="text-lg">{done ? '✅' : '📋'}</span>
                     <div className="flex-1 min-w-0">
-                      <div className="text-[10px] font-black text-white">{dc.title}</div>
-                      <div className="text-[8px] text-slate-500 leading-relaxed">{dc.desc}</div>
+                      <div className="text-sm font-black text-white">{dc.title}</div>
+                      <div className="text-xs text-slate-500 leading-relaxed">{dc.desc}</div>
                     </div>
                     {!done && (
                       <button
@@ -413,7 +413,7 @@ export default function RPGGame({ onExit }) {
                           setXpPopup(`+${dc.xp} XP`);
                           setTimeout(() => setXpPopup(null), 2000);
                         }}
-                        className="px-2.5 py-1 bg-amber-500/10 border border-amber-500/30 rounded-lg text-[8px] font-black text-amber-400 hover:bg-amber-500/20 transition-colors"
+                        className="px-2.5 py-1 bg-amber-500/10 border border-amber-500/30 rounded-lg text-xs font-black text-amber-400 hover:bg-amber-500/20 transition-colors"
                       >
                         +{dc.xp}XP
                       </button>
@@ -428,12 +428,12 @@ export default function RPGGame({ onExit }) {
           {showPanel === 'inventory' && (
             <div className="space-y-1">
               {rpgState.inventory.length === 0 ? (
-                <div className="text-center py-4 text-[10px] text-slate-700 font-bold">
+                <div className="text-center py-4 text-sm text-slate-700 font-bold">
                   No items yet. Complete quests to earn rewards!
                 </div>
               ) : (
                 <>
-                  <div className="text-[8px] font-black text-slate-600 uppercase tracking-widest mb-2">
+                  <div className="text-xs font-black text-slate-600 uppercase tracking-widest mb-2">
                     {rpgState.inventory.length} items
                   </div>
                   <div className="grid grid-cols-4 gap-1.5">
@@ -443,7 +443,7 @@ export default function RPGGame({ onExit }) {
                       </div>
                     ))}
                     {rpgState.inventory.length > 20 && (
-                      <div className="aspect-square bg-slate-950 border border-slate-800 rounded-lg flex items-center justify-center text-[9px] font-black text-slate-600">
+                      <div className="aspect-square bg-slate-950 border border-slate-800 rounded-lg flex items-center justify-center text-sm font-black text-slate-600">
                         +{rpgState.inventory.length - 20}
                       </div>
                     )}
@@ -512,12 +512,12 @@ export default function RPGGame({ onExit }) {
                   </h2>
                   <span className="text-sm" title={element.name}>{element.icon}</span>
                 </div>
-                <p className="text-[9px] font-bold text-slate-600 uppercase tracking-widest">{region.description}</p>
+                <p className="text-sm font-bold text-slate-600 uppercase tracking-widest">{region.description}</p>
               </div>
               {/* Progress ring text */}
               <div className="text-right">
                 <div className="text-sm font-black" style={{ color: element.color }}>{questsCompleted}/{region.quests.length}</div>
-                <div className="text-[8px] font-bold text-slate-600 uppercase">Complete</div>
+                <div className="text-xs font-bold text-slate-600 uppercase">Complete</div>
               </div>
             </div>
 
@@ -563,18 +563,18 @@ export default function RPGGame({ onExit }) {
                       <h4 className={`font-black text-sm ${isCompleted ? 'text-emerald-400' : quest.enemy.isBoss ? 'text-amber-400' : 'text-white'}`}>
                         {quest.title}
                       </h4>
-                      <p className="text-[10px] text-slate-500 truncate mt-0.5">{quest.story.slice(0, 65)}...</p>
-                      <span className="text-[9px] font-bold px-1.5 py-0.5 rounded mt-1 inline-block" style={{ color: element.color, backgroundColor: element.bg }}>
+                      <p className="text-sm text-slate-500 truncate mt-0.5">{quest.story.slice(0, 65)}...</p>
+                      <span className="text-sm font-bold px-1.5 py-0.5 rounded mt-1 inline-block" style={{ color: element.color, backgroundColor: element.bg }}>
                         {quest.concept}
                       </span>
                     </div>
 
                     <div className="flex-shrink-0 text-right space-y-1">
-                      <div className="flex items-center gap-1 text-[9px] font-bold text-slate-600">
+                      <div className="flex items-center gap-1 text-sm font-bold text-slate-600">
                         <Heart className="w-3 h-3 text-red-400" />
                         <span>{quest.enemy.hp} HP</span>
                       </div>
-                      <div className="flex items-center gap-1 text-[9px] font-bold text-amber-500">
+                      <div className="flex items-center gap-1 text-sm font-bold text-amber-500">
                         <Zap className="w-3 h-3" />
                         <span>+{quest.xpReward} XP</span>
                       </div>
@@ -661,7 +661,7 @@ export default function RPGGame({ onExit }) {
             <div key={ach.id} className="flex items-center gap-3 px-4 py-3 bg-amber-500/10 border border-amber-500/40 rounded-xl shadow-xl">
               <span className="text-2xl">{ach.icon}</span>
               <div>
-                <div className="text-[10px] font-black text-amber-400 uppercase tracking-wider">Achievement Unlocked!</div>
+                <div className="text-sm font-black text-amber-400 uppercase tracking-wider">Achievement Unlocked!</div>
                 <div className="text-xs font-bold text-white">{ach.name}</div>
               </div>
             </div>
@@ -694,11 +694,11 @@ export default function RPGGame({ onExit }) {
         </div>
         {rpgState.heroName && (
           <div className="flex items-center gap-2">
-            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-full text-[10px] font-black">
+            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-full text-sm font-black">
               <Crown className="w-3 h-3 text-purple-400" />
               <span className="text-purple-400">AR {playerAR}</span>
             </div>
-            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-full text-[10px] font-black">
+            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-full text-sm font-black">
               <Zap className="w-3 h-3 text-amber-400" />
               <span className="text-amber-400 tabular-nums">{rpgState.totalXP} XP</span>
             </div>

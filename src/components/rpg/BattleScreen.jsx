@@ -138,11 +138,12 @@ export default function BattleScreen({ quest, onVictory, onRetreat, playerStats,
       setOutput(userOutput || '(No output — add print() to see results)');
 
       const expected = quest.expectedOutput.trim();
+      const normalize = s => s.replace(/\s+/g, " ").trim();
       const actual = userOutput.trim();
       let isCorrect = false;
 
       switch (quest.validationType) {
-        case 'exact': isCorrect = actual === expected; break;
+        case 'exact': isCorrect = normalize(actual) === normalize(expected); break;
         case 'contains': isCorrect = actual.includes(expected); break;
         case 'regex': isCorrect = new RegExp(expected).test(actual); break;
         default: isCorrect = actual === expected;
@@ -260,17 +261,17 @@ export default function BattleScreen({ quest, onVictory, onRetreat, playerStats,
           {/* Battle stats */}
           <div className="flex justify-center gap-3 flex-wrap">
             {attempts === 1 && (
-              <div className="px-3 py-1.5 rounded-full text-[10px] font-black border" style={{ color: el.color, borderColor: el.border, backgroundColor: el.bg }}>
+              <div className="px-3 py-1.5 rounded-full text-sm font-black border" style={{ color: el.color, borderColor: el.border, backgroundColor: el.bg }}>
                 ⚡ First Try!
               </div>
             )}
             {hintLevel === 0 && (
-              <div className="px-3 py-1.5 bg-purple-500/10 border border-purple-500/30 rounded-full text-[10px] font-black text-purple-400">
+              <div className="px-3 py-1.5 bg-purple-500/10 border border-purple-500/30 rounded-full text-sm font-black text-purple-400">
                 🧠 No Hints Used
               </div>
             )}
             {combo > 1 && (
-              <div className="px-3 py-1.5 bg-amber-500/10 border border-amber-500/30 rounded-full text-[10px] font-black text-amber-400">
+              <div className="px-3 py-1.5 bg-amber-500/10 border border-amber-500/30 rounded-full text-sm font-black text-amber-400">
                 🔥 Combo x{combo}
               </div>
             )}
@@ -281,25 +282,25 @@ export default function BattleScreen({ quest, onVictory, onRetreat, playerStats,
             <div className="px-5 py-3 bg-amber-500/10 border border-amber-500/30 rounded-2xl text-center">
               <Zap className="w-5 h-5 text-amber-400 mx-auto mb-1" />
               <div className="text-amber-400 font-black text-lg">+{quest.xpReward}</div>
-              <div className="text-[9px] font-bold text-slate-600 uppercase">XP</div>
+              <div className="text-sm font-bold text-slate-600 uppercase">XP</div>
             </div>
             <div className="px-5 py-3 rounded-2xl text-center border" style={{ backgroundColor: el.bg, borderColor: el.border }}>
               <span className="text-2xl block mb-1">{el.icon}</span>
               <div className="font-black text-sm" style={{ color: el.color }}>{el.name}</div>
-              <div className="text-[9px] font-bold text-slate-600 uppercase">Affinity</div>
+              <div className="text-sm font-bold text-slate-600 uppercase">Affinity</div>
             </div>
             {enemy.isBoss && (
               <div className="px-5 py-3 bg-purple-500/10 border border-purple-500/30 rounded-2xl text-center">
                 <Trophy className="w-5 h-5 text-purple-400 mx-auto mb-1" />
                 <div className="text-purple-400 font-black text-sm">Region!</div>
-                <div className="text-[9px] font-bold text-slate-600 uppercase">Clear</div>
+                <div className="text-sm font-bold text-slate-600 uppercase">Clear</div>
               </div>
             )}
           </div>
 
           {/* Concept mastered */}
           <div className="rounded-xl p-4 mx-auto max-w-sm border" style={{ backgroundColor: el.bg, borderColor: el.border }}>
-            <p className="text-[9px] font-black text-slate-500 uppercase tracking-widest mb-1">Concept Mastered</p>
+            <p className="text-sm font-black text-slate-500 uppercase tracking-widest mb-1">Concept Mastered</p>
             <p className="font-bold" style={{ color: el.color }}>{quest.concept}</p>
           </div>
 
@@ -353,7 +354,7 @@ export default function BattleScreen({ quest, onVictory, onRetreat, playerStats,
               {/* Hit label popup */}
               {hitLabel && (
                 <div
-                  className="absolute -top-6 left-1/2 -translate-x-1/2 whitespace-nowrap text-[10px] font-black uppercase tracking-wider animate-bounce"
+                  className="absolute -top-6 left-1/2 -translate-x-1/2 whitespace-nowrap text-sm font-black uppercase tracking-wider animate-bounce"
                   style={{ color: el.color, textShadow: `0 0 8px ${el.color}` }}
                 >
                   {hitLabel}
@@ -362,7 +363,7 @@ export default function BattleScreen({ quest, onVictory, onRetreat, playerStats,
 
               {/* Element icon badge */}
               <div
-                className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center text-[9px] border border-slate-900"
+                className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center text-sm border border-slate-900"
                 style={{ backgroundColor: el.bg }}
               >
                 {el.icon}
@@ -375,9 +376,9 @@ export default function BattleScreen({ quest, onVictory, onRetreat, playerStats,
                 {enemy.name}
               </h3>
               <div className="flex items-center gap-2 mt-0.5">
-                <span className="text-[9px] font-bold text-slate-500">{quest.concept}</span>
+                <span className="text-sm font-bold text-slate-500">{quest.concept}</span>
                 <span
-                  className="text-[8px] font-black px-1.5 py-0.5 rounded uppercase tracking-wider"
+                  className="text-xs font-black px-1.5 py-0.5 rounded uppercase tracking-wider"
                   style={enemy.isBoss
                     ? { color: '#fbbf24', backgroundColor: 'rgba(251,191,36,0.1)' }
                     : { color: el.color, backgroundColor: el.bg }
@@ -394,10 +395,10 @@ export default function BattleScreen({ quest, onVictory, onRetreat, playerStats,
             <div className="flex items-center gap-1.5 justify-end">
               <Heart className="w-3.5 h-3.5 text-red-400" />
               <span className="text-sm font-black tabular-nums" style={{ color: hpBarColor }}>{enemyHp}</span>
-              <span className="text-[9px] text-slate-600 font-bold">/ {enemy.hp}</span>
+              <span className="text-sm text-slate-600 font-bold">/ {enemy.hp}</span>
             </div>
             {combo > 1 && (
-              <div className="text-[9px] font-black text-amber-400 mt-0.5">🔥 Combo x{combo}</div>
+              <div className="text-sm font-black text-amber-400 mt-0.5">🔥 Combo x{combo}</div>
             )}
           </div>
         </div>
@@ -423,7 +424,7 @@ export default function BattleScreen({ quest, onVictory, onRetreat, playerStats,
       <div className="rounded-xl p-4 space-y-3 border" style={{ backgroundColor: el.bg + '40', borderColor: el.border }}>
         <p className="text-sm text-slate-300 leading-relaxed italic">"{quest.story}"</p>
         <div className="pt-2 border-t border-slate-800/50">
-          <p className="text-[9px] font-black uppercase tracking-widest mb-1.5" style={{ color: el.color }}>
+          <p className="text-sm font-black uppercase tracking-widest mb-1.5" style={{ color: el.color }}>
             {el.icon} Mission Objective
           </p>
           <p className="text-sm text-slate-200 font-medium leading-relaxed">{quest.instructions}</p>
@@ -440,11 +441,11 @@ export default function BattleScreen({ quest, onVictory, onRetreat, playerStats,
               <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/60"></div>
               <div className="w-2.5 h-2.5 rounded-full bg-green-500/60"></div>
             </div>
-            <span className="text-[9px] font-bold text-slate-600 uppercase tracking-widest ml-2">battle.py</span>
+            <span className="text-sm font-bold text-slate-600 uppercase tracking-widest ml-2">battle.py</span>
           </div>
           <div className="flex items-center gap-2">
             {/* Keyboard hint */}
-            <span className="hidden sm:flex items-center gap-1 text-[8px] font-bold text-slate-700 border border-slate-800 rounded px-1.5 py-0.5">
+            <span className="hidden sm:flex items-center gap-1 text-xs font-bold text-slate-700 border border-slate-800 rounded px-1.5 py-0.5">
               Ctrl+↵ Attack
             </span>
             <button
@@ -457,7 +458,7 @@ export default function BattleScreen({ quest, onVictory, onRetreat, playerStats,
             <button
               onClick={runCode}
               disabled={isRunning || pyLoading}
-              className="ml-1 px-4 py-1.5 rounded-lg text-[10px] font-black flex items-center gap-1.5 transition-all disabled:opacity-50 hover:scale-105 active:scale-95 uppercase tracking-wider text-white"
+              className="ml-1 px-4 py-1.5 rounded-lg text-sm font-black flex items-center gap-1.5 transition-all disabled:opacity-50 hover:scale-105 active:scale-95 uppercase tracking-wider text-white"
               style={{
                 background: `linear-gradient(to right, ${el.color}cc, ${el.color}88)`,
                 boxShadow: `0 4px 12px ${el.color}33`,
@@ -477,7 +478,7 @@ export default function BattleScreen({ quest, onVictory, onRetreat, playerStats,
         <div className="relative flex" style={{ minHeight: '180px', maxHeight: '360px' }}>
           <div
             ref={lineCountRef}
-            className="w-10 flex-shrink-0 bg-slate-950 text-right pr-2 py-3 text-[11px] text-slate-700 font-mono leading-[1.625rem] select-none overflow-hidden border-r border-slate-900/80"
+            className="w-10 flex-shrink-0 bg-slate-950 text-right pr-2 py-3 text-sm text-slate-700 font-mono leading-[1.625rem] select-none overflow-hidden border-r border-slate-900/80"
           >
             {Array.from({ length: lineCount }, (_, i) => (
               <div key={i}>{i + 1}</div>
@@ -504,7 +505,7 @@ export default function BattleScreen({ quest, onVictory, onRetreat, playerStats,
                 : output.includes('❌') || output.includes('Error') ? 'bg-red-400'
                 : 'bg-emerald-400'
               }`} />
-              <span className="text-[9px] font-black text-slate-600 uppercase tracking-widest">Output</span>
+              <span className="text-sm font-black text-slate-600 uppercase tracking-widest">Output</span>
             </div>
             <pre className="px-4 py-3 text-sm font-mono text-slate-300 max-h-48 overflow-auto whitespace-pre-wrap leading-relaxed">
               {isRunning ? `${el.icon} Casting spell...` : output}
@@ -513,7 +514,7 @@ export default function BattleScreen({ quest, onVictory, onRetreat, playerStats,
         )}
 
         {/* Status bar */}
-        <div className="px-4 py-1.5 bg-slate-900/30 border-t border-slate-800/50 flex items-center justify-between text-[9px] text-slate-700 font-bold">
+        <div className="px-4 py-1.5 bg-slate-900/30 border-t border-slate-800/50 flex items-center justify-between text-sm text-slate-700 font-bold">
           <span>{pyReady ? '🐍 Python 3.12 ready' : pyLoading ? '⏳ Summoning Python...' : '💡 Click ATTACK or Ctrl+Enter to run'}</span>
           <span className="tabular-nums">{lineCount} lines</span>
         </div>
@@ -526,7 +527,7 @@ export default function BattleScreen({ quest, onVictory, onRetreat, playerStats,
             key={i}
             onClick={() => setHintLevel(i + 1)}
             disabled={hintLevel > i}
-            className={`px-3 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-wider transition-all ${
+            className={`px-3 py-1.5 rounded-lg text-sm font-black uppercase tracking-wider transition-all ${
               hintLevel > i
                 ? 'bg-amber-500/10 border border-amber-500/30 text-amber-400'
                 : 'bg-slate-900 border border-slate-800 text-slate-600 hover:border-amber-500/30 hover:text-amber-400'
@@ -538,7 +539,7 @@ export default function BattleScreen({ quest, onVictory, onRetreat, playerStats,
         ))}
         <button
           onClick={onRetreat}
-          className="ml-auto px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-[10px] font-bold text-slate-600 hover:text-red-400 hover:border-red-500/30 transition-colors uppercase tracking-wider"
+          className="ml-auto px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-sm font-bold text-slate-600 hover:text-red-400 hover:border-red-500/30 transition-colors uppercase tracking-wider"
         >
           <Shield className="w-3 h-3 inline mr-1" />
           Retreat
@@ -548,7 +549,7 @@ export default function BattleScreen({ quest, onVictory, onRetreat, playerStats,
       {/* Hint display */}
       {hintLevel > 0 && (
         <div className="bg-amber-500/5 border border-amber-500/20 rounded-xl p-4">
-          <p className="text-[9px] font-black text-amber-500 uppercase tracking-widest mb-2">
+          <p className="text-sm font-black text-amber-500 uppercase tracking-widest mb-2">
             💡 Hint {hintLevel}
           </p>
           <p className="text-sm text-amber-200/80 font-mono whitespace-pre-wrap leading-relaxed">

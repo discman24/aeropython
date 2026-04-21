@@ -103,7 +103,7 @@ export default function AuthModal({ onClose, onLogin }) {
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="text-[9px] font-black text-slate-600 uppercase tracking-widest block mb-1.5">Email</label>
+            <label className="text-sm font-black text-slate-600 uppercase tracking-widest block mb-1.5">Email</label>
             <div className="relative">
               <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-600" />
               <input
@@ -118,7 +118,7 @@ export default function AuthModal({ onClose, onLogin }) {
           </div>
 
           <div>
-            <label className="text-[9px] font-black text-slate-600 uppercase tracking-widest block mb-1.5">Password</label>
+            <label className="text-sm font-black text-slate-600 uppercase tracking-widest block mb-1.5">Password</label>
             <div className="relative">
               <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-600" />
               <input
@@ -163,7 +163,7 @@ export default function AuthModal({ onClose, onLogin }) {
         </div>
 
         {/* V2 notice */}
-        <p className="text-[8px] font-bold text-slate-700 text-center mt-4 uppercase tracking-wider">
+        <p className="text-xs font-bold text-slate-700 text-center mt-4 uppercase tracking-wider">
           V1: Progress saves locally in your browser
         </p>
       </div>
