@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Background circle -->
+  <circle cx="256" cy="256" r="256" fill="#0f1923"/>
+  <!-- Outer ring -->
+  <circle cx="256" cy="256" r="240" fill="none" stroke="#00d4ff" stroke-width="6" opacity="0.6"/>
+  <!-- Inner ring -->
+  <circle cx="256" cy="256" r="200" fill="#172030"/>
+  <!-- Compass tick marks at cardinal points -->
+  <rect x="253" y="56" width="6" height="24" rx="3" fill="#00d4ff" opacity="0.8"/>
+  <rect x="253" y="432" width="6" height="24" rx="3" fill="#00d4ff" opacity="0.8"/>
+  <rect x="432" y="253" width="24" height="6" rx="3" fill="#00d4ff" opacity="0.8"/>
+  <rect x="56" y="253" width="24" height="6" rx="3" fill="#00d4ff" opacity="0.8"/>
+  <!-- Airplane shape (centered, heading up) -->
+  <g transform="translate(256,256)">
+    <!-- Fuselage -->
+    <ellipse cx="0" cy="-10" rx="14" ry="72" fill="#f0f6ff"/>
+    <!-- Wings -->
+    <polygon points="0,-20 -88,40 -72,52 0,24 72,52 88,40" fill="#f0f6ff"/>
+    <!-- Tail -->
+    <polygon points="0,44 -32,82 -20,84 0,62 20,84 32,82" fill="#aac4de"/>
+    <!-- Cockpit tint -->
+    <ellipse cx="0" cy="-32" rx="9" ry="14" fill="#00d4ff" opacity="0.7"/>
+  </g>
+  <!-- Accent glow under plane -->
+  <ellipse cx="256" cy="256" rx="30" ry="8" fill="#00d4ff" opacity="0.12"/>
+</svg>
